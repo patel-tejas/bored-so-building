@@ -4,7 +4,7 @@ import chatSession from '@/lib/GeminiModel'
 import React, { useState } from 'react'
 
 const Form = () => {
-    const [username, setUsername] = useState<string>("patel-tejas")
+    const [username, setUsername] = useState<string>("")
     const [roastContent, setRoastContent] = useState<string>("")
     const [error, setError] = useState<string | null>(null)
 
@@ -33,8 +33,8 @@ const Form = () => {
     return (
         <div className='text-gray-300 z-10 mt-5 flex flex-col items-center justify-center w-full sm:max-w-[720px]'>
             <div className='flex flex-col sm:flex-row items-center justify-center gap-5'>
-                <input value={username} onChange={(e) => setUsername(e.target.value)} type="text" placeholder='patel-tejas' className='rounded-lg px-3 py-2 focus:outline-none text-black' />
-                <button className='bg-blue-500 py-2 px-3 rounded-lg cursor-pointer uppercase font-semibold'
+                <input value={username} onChange={(e) => setUsername(e.target.value)} type="text" placeholder='username...' className='rounded-lg px-3 py-2 focus:outline-none text-black' />
+                <button className='bg-blue-500 py-2 px-3 rounded-lg cursor-pointer  font-semibold hover:bg-gradient-to-br hover:from-orange-500 hover:to-red-500 transition-all duration-300'
                     onClick={handleRoast} >Roast🔥</button>
             </div>
 
