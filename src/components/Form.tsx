@@ -7,12 +7,14 @@ const Form = () => {
     const [username, setUsername] = useState<string>("")
     const [roastContent, setRoastContent] = useState<string>("")
     const [error, setError] = useState<string | null>(null)
+    const [loading, setLoading] = useState<boolean>(false)
 
     const handleRoast = async (e: React.FormEvent) => {
+        
         e.preventDefault()
         setError(null)
         setRoastContent("")
-
+        setLoading(true)
         try {
             const userData = await getUser(username);
             console.log(userData);
@@ -23,10 +25,12 @@ const Form = () => {
             const roastedText = await roast.response.text();
             console.log(roastedText);
             setRoastContent(roastedText);
+            setLoading(false)
 
         } catch (error) {
             // console.error("Error during roasting process:", error)
             setError("Failed to generate. Enter valid username.")
+            setLoading(false)
         }
     }
 
@@ -46,6 +50,9 @@ const Form = () => {
                     {error}
                 </p>}
             </div>
+                {loading && (
+                    <p className='mt-5 text-white'>Lemme cook...🔪</p>
+                )}
         </div>
     )
 }
