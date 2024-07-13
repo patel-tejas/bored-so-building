@@ -26,23 +26,23 @@ const Form = () => {
 
         } catch (error) {
             // console.error("Error during roasting process:", error)
-            setError("Failed to generate. Please try again later.")
+            setError("Failed to generate. Enter valid username.")
         }
     }
 
     return (
-        <div className='text-gray-300 z-10 mt-5'>
+        <div className='text-gray-300 z-10 mt-5 flex flex-col items-center justify-center w-full sm:max-w-[720px]'>
             <div className='flex flex-col sm:flex-row items-center justify-center gap-5'>
                 <input value={username} onChange={(e) => setUsername(e.target.value)} type="text" placeholder='patel-tejas' className='rounded-lg px-3 py-2 focus:outline-none text-black' />
                 <button className='bg-blue-500 py-2 px-3 rounded-lg cursor-pointer uppercase font-semibold'
                     onClick={handleRoast} >Roast🔥</button>
             </div>
 
-            <div>
-                {roastContent && <p className='mt-5'>
+            <div className='flex items-center justify-center'>
+                {roastContent && <p className='text-center w-full mt-5 py-2 px-3 sm:px-10 sm:py-5 bg-gray-800/35 border-gray-700 border rounded-xl '>
                     {roastContent}
                 </p>}
-                {error && <p className='mt-5 text-red-500'>
+                {error && <p className='mt-5 text-red-500 text-center w-full  py-2 px-3 sm:px-10 sm:py-5 bg-gray-800/35 border-gray-700 border rounded-xl '>
                     {error}
                 </p>}
             </div>
